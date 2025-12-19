@@ -45,3 +45,5 @@ After that you should have a new virtual output device called "Csound Sink".
 Just set this as the default and then your music should play with effects applied from just about any player utilizing a PipeWire backend.
 
 Of course running your audio all the time through heavy filtering might not sound too good in the end, especially if your laptop fan starts to chime in. :D
+
+LICENSE is the MIT License used by PipeWire.
