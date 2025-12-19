@@ -1,5 +1,5 @@
 # pipewire-spa-plugin-csound
-This repository is the result of trying to run Csound as a PipeWire spa filter
+This repository is the result of trying to run Csound as a PipeWire spa filter-graph plugin
 
 First install Csound version 7 (currently in beta).
 https://csound.com
@@ -8,24 +8,24 @@ https://github.com/csound/csound/blob/develop/BUILD.md
 Then get PipeWire source code, for example from their GitLab:
 https://gitlab.freedesktop.org/pipewire/pipewire
 
-Apply the patch file found in this repository to add the Csound functionality.
-Build the spa csound plugin and copy it to somewhere on library path.
+Apply the patch files found in this repository (in order) to add the Csound functionality.
+Build the spa filter-graph csound plugin and copy it system (pipewire) accessible library path.
 
 **Example steps**:
 
 ```sh
 # Go to PipeWire source directory:
 cd pipewire
-# Apply patch:
-git apply path/to/where/you/have/the/patch/file/0001-spa-csound-Csound-version-7-based-spa-plugin-effects.patch
+# Apply patches:
+git apply path/to/where/you/have/the/patch/file/0001-spa-filter-graph-csound-Csound-version-7-based-filte.patch
+git apply path/to/where/you/have/the/patch/file/0002-spa-filter-graph-csound-Updated-csound_connect_port.patch
 # Configure:
 meson setup --prefix ~/.local build
 # Build:
 cd build
-ninja spa/plugins/csound/libspa-csound.so
+ninja spa/plugins/filter-graph/libspa-filter-graph-plugin-csound.so
 # Install:
-mkdir -p ~/.local/lib64/spa-0.2/csound
-cp spa/plugins/csound/libspa-csound.so ~/.local/lib64/spa-0.2/csound/libspa-csound.so
+sudo cp spa/plugins/filter-graph/libspa-filter-graph-plugin-csound.so /usr/lib64/spa-0.2/filter-graph/libspa-filter-graph-plugin-csound.so
 
 ```
 
