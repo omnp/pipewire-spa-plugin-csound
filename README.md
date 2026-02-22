@@ -16,11 +16,15 @@ Build the spa filter-graph csound plugin and copy it system (pipewire) accessibl
 ```sh
 # Go to PipeWire source directory:
 cd pipewire
-# Apply patches:
-git apply path/to/where/you/have/the/patch/file/0001-spa-filter-graph-csound-Csound-version-7-based-filte.patch
-git apply path/to/where/you/have/the/patch/file/0002-spa-filter-graph-csound-Updated-csound_connect_port.patch
+# Apply patch file:
+# (test / dry run)
+patch -p1 --dry-run < path/to/where/you/have/the/patch/file/pipewire-spa-filter-graph-plugin-csound.patch
+# (apply)
+# patch -p1 < path/to/where/you/have/the/patch/file/pipewire-spa-filter-graph-plugin-csound.patch
 # Configure:
 meson setup --prefix ~/.local build
+# Or if you have Csound installed in ~/.local:
+meson setup --prefix ~/.local --pkg-config-path ~/.local/lib/pkgconfig/
 # Build:
 cd build
 ninja spa/plugins/filter-graph/libspa-filter-graph-plugin-csound.so
