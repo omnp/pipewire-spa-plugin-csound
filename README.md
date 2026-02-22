@@ -8,7 +8,7 @@ https://github.com/csound/csound/blob/develop/BUILD.md
 Then get PipeWire source code, for example from their GitLab:
 https://gitlab.freedesktop.org/pipewire/pipewire
 
-Apply the patch files found in this repository (in order) to add the Csound functionality.
+Apply the patch file found in this repository to add the Csound functionality.
 Build the spa filter-graph csound plugin and copy it system (pipewire) accessible library path.
 
 **Example steps**:
